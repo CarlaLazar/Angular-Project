@@ -1,0 +1,14 @@
+<mat-form-field id="search-input">
+    <input matInput placeholder="Search for an article!" i18n-placeholder
+           [matAutocomplete]="articleAutocomplete" [formControl]="articleFormControl">
+  </mat-form-field>
+  
+  <mat-autocomplete #articleAutocomplete="matAutocomplete">
+    <mat-option *ngFor="let article of filteredArticles"
+                [value]="article.title">
+      <a class="article-link" [routerLink]="[routesConfig.routes.article.detail(article.id)]">
+        {{article.title | capitalizefirst}}
+      </a>
+    </mat-option>
+  </mat-autocomplete>
+  

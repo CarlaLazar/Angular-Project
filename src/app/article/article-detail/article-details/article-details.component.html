@@ -1,0 +1,14 @@
+<div class="container" *ngIf="!article">
+  <app-article-loading></app-article-loading>
+</div>
+<div class="container" *ngIf="article" [@fadeIn]="'fadeIn'">
+  <ng-container>
+    <app-article-card [article]="article"></app-article-card>
+    <div id="article-json">
+      <pre>{{article | json}}</pre>
+    </div>
+  </ng-container>
+</div>
+<button aria-label="Go back button" mat-raised-button type="button" (click)="goBack()" i18n>
+  Go back
+</button>

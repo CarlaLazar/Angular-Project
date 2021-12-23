@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+h2 {
+	font-family: 'Poiret One', cursive;
+	color:  #002527;
+	font-size: 250%;
+}
+
+h5{
+	font-family: 'Cinzel', serif;
+}
+.jumbotron {
+    background: url('assets/sweden.jpg') no-repeat 10% 40%;
+    color: white;
+    background-size: cover;
+    height: 550px;
+    margin-bottom: 0 !important;
+   }
+
+.navbar {
+	opacity: 0.75;
+}
+
+.blog-content, p, form {
+	font-family: 'Pontano Sans', sans-serif;
+}
+
+.form-group >h5{
+	font-size: 90%;
+}
+
+/* contact-component */
+.contact {
+	background-color:#2b9294;
+	padding: 2%;
+}
+
+.contact >h4{
+	color: #dedfa5;
+	font-family: 'Cinzel', serif;
+}
+
+.list-i{
+	color: #e3ffed;
+}
+
+// .map{    
+// 	background: url('assets/map.jpg') no-repeat center center;
+//     background-size: cover;
+//     height: 250px;
+//     margin-bottom: 0 !important;
+//    }

@@ -1,0 +1,92 @@
+<div id='left'>
+    <h2 class='header__title' i18n>My articles</h2>
+    <p *ngIf='!user?.articles?.length' class='my-articles__no-articles--message' i18n>
+      No articles yet, you can create new articles!
+    </p>
+    <div>
+      <mat-list id='loading-list' *ngIf='!user?.articles'>
+        <mat-list-item *ngFor='let i of [1,2,3,4,5,6,7,8]'>
+          <h3 mat-line>
+            <app-loading-placeholder [width]="'150px'" [height]="'0.9rem'"></app-loading-placeholder>
+          </h3>
+          <p mat-line>
+            <app-loading-placeholder [width]="'100px'" [height]="'0.9rem'"></app-loading-placeholder>
+          </p>
+          <div class='article-actions'>
+            <app-loading-placeholder [width]="'30px'" [height]="'0.9rem'"></app-loading-placeholder>
+  
+            <mat-icon class='icon__like--grey'>favorite</mat-icon>
+          </div>
+        </mat-list-item>
+      </mat-list>
+      <mat-list>
+        <mat-list-item *ngFor='let article of user?.articles; trackBy: trackByFn'>
+          <h3 mat-line [class.cp]='article.published'>
+            {{article.title}}
+          </h3>
+          <p mat-line [class.cp]='article.published'>
+            <span>{{article.image}}</span>
+          </p>
+          <div class='article-actions'>
+            <mat-icon class='icon__remove' *ngIf='!article.published'
+                      (click)='deleteArticle(article);'>
+              delete
+            </mat-icon>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+  <div id='right'>
+    <h2 class='header__title' i18n>Create an article</h2>
+    <div id='form-loading' *ngIf='!user?.articles'>
+      <form>
+        <div class='input-container'>
+          <app-loading-placeholder [height]="'2rem'"></app-loading-placeholder>
+        </div>
+        <div class='input-container'>
+          <app-loading-placeholder [height]="'2rem'"></app-loading-placeholder>
+        </div>
+  
+        <button aria-label='create button' mat-raised-button [disabled]='true' i18n>Create</button>
+      </form>
+    </div>
+    <div *ngIf='user?.articles'>
+      <form [formGroup]='newArticleForm' #form='ngForm' 
+            (ngSubmit)='createNewArticle()' autocomplete='on'>
+        <mat-form-field class='input-container'>
+          <input matInput name='title' type='text'
+                 placeholder='title'
+                 formControlName='title'>
+          <mat-error *ngIf='title.errors && form.submitted'>
+            <ng-template [ngIf]="title.errors['required']" i18n>
+              Title is required
+            </ng-template>
+            <ng-template [ngIf]="title.errors['maxlength']" i18n>
+              The field is too long
+            </ng-template>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class='input-container'>
+          <input matInput type='text' name='description'
+                 placeholder='Description' i18n-placeholder='@@description'
+                 formControlName='description'>
+          <mat-error *ngIf='description.errors && form.submitted'>
+            <ng-template [ngIf]="description.errors['required']" i18n>
+              Description is required
+            </ng-template>
+            <ng-template [ngIf]="description.errors['maxlength']" i18n>
+              The field is too long. Required length: {{description.errors['maxlength'].requiredLength}}.
+              Current: {{description.errors['maxlength'].actualLength}}
+            </ng-template>
+          </mat-error>
+        </mat-form-field>
+        <button aria-label='create button' mat-raised-button type='submit'
+                [disabled]='form.submitted && !newArticleForm.valid' i18n>Create</button>
+        <div *ngIf='error' i18n>An error has ocurred</div>
+      </form>
+    </div>
+  
+  </div>
+  <div class='clear'></div>
+  
