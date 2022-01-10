@@ -5,7 +5,7 @@ import { LoadingComponent } from '../shared/components/loading/loading.component
 import { SharedModule } from '../shared/shared.module';
 import { DeleteArticleComponent } from './article-delete-dialog/delete-article/delete-article.component';
 import { ArticleDetailsComponent } from './article-detail/article-details/article-details.component';
-import { ArticleRoutingModule } from './article-routing.module';
+
 import { MyArticlesComponent } from './my-articles/my-articles.component';
 
 
@@ -15,10 +15,10 @@ import { MyArticlesComponent } from './my-articles/my-articles.component';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    ArticleRoutingModule
   ],
   declarations: [
     MyArticlesComponent,
+    LoadingComponent,
     ArticleDetailsComponent,
     DeleteArticleComponent,
   ],

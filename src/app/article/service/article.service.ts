@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Article } from 'src/app/shared/models/article.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,12 @@ export class ArticlesService {
 
   constructor(private http: HttpClient) {
   }
-  endpoint: string = "http://localhost:123453/api/articles";
+  endpoint: string = "http://localhost:3000/articles";
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   searchArticles(): Observable<any> {
-    return this.http.get(this.endpoint); 
+    debugger
+    return this.http.get(`${this.endpoint}`);
    
   }
 

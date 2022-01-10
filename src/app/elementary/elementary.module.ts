@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SharedModule } from '../shared/shared.module';
 import { ElementaryRoutingModule } from './elemetary-routing.module';
-import { Page404Component } from './pages/page404/page404.component';
+import { Page404Component } from '../shared/pages/page404/page404.component';
 import { AboutComponent } from '../about/about.component';
 
 @NgModule({
@@ -19,14 +19,12 @@ import { AboutComponent } from '../about/about.component';
   ],
   declarations: [
     HomePageComponent,
-    Page404Component,
     NavbarComponent,
     AboutComponent,
     SearchBarComponent,
   ],
   exports: [
     HomePageComponent,
-    Page404Component,
     NavbarComponent,
     SearchBarComponent,
     AboutComponent

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from '../about/about.component';
 import { RoutesConfig } from '../configs/routes.config';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { Page404Component } from './pages/page404/page404.component';
+import { Page404Component } from '../shared/pages/page404/page404.component';
 
 const routesNames = RoutesConfig.routesNames;
 

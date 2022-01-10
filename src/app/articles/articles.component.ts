@@ -16,8 +16,9 @@ export class ArticlesComponent implements OnInit {
     private eventsService: EventsService) {
 }
   ngOnInit() {
+    debugger
     this.articles$ = this.articlesService.searchArticles();
-
+    debugger
     this.eventsService.events$.subscribe((event) => {
       if (event.type === EventsTypes.UPDATE_ARTICLES) {
         this.articles$ = this.articlesService.searchArticles();

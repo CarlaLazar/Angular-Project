@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from './about/about.component';
 import { RoutesConfig } from './configs/routes.config';
+import { HomePageComponent } from './elementary/pages/home-page/home-page.component';
 
 
 const routes: Routes = [
+  { path:  "", component:HomePageComponent },
+  { path:  RoutesConfig.basePaths.about, component:AboutComponent },
   { path: RoutesConfig.basePaths.auth, loadChildren: () => import('./authentication/auth.module').then(m => m.AuthenticationModule) },
-  { path: RoutesConfig.basePaths.home, loadChildren: () => import('./elementary/elementary.module').then(m => m.ElementaryModule) },
-  { path: RoutesConfig.basePaths.about, loadChildren: () => import('./elementary/elementary.module').then(m => m.ElementaryModule) },
-  { path: RoutesConfig.basePaths.articles, loadChildren: () => import('./article/article.module').then(m => m.ArticleModule) },
+  { path: RoutesConfig.basePaths.articles, loadChildren: () => import('./articles/articles.module').then(m => m.ArticlesModule) },
   { path: '**', redirectTo: RoutesConfig.routes.error404 }
 ];
 

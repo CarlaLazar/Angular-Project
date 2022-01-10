@@ -1,8 +1,8 @@
-@import "../../../styles/colors";
-@import "../../../styles/mixins";
+// @import "../../../styles/colors";
+// @import "../../../styles/mixins";
 
 .article-detail-link {
-  @include text-small-grey();
+  // @include text-small-grey();
 }
 
 mat-card-title, mat-card-subtitle, .mat-card-image {
@@ -11,11 +11,11 @@ mat-card-title, mat-card-subtitle, .mat-card-image {
 
 .article-card {
   margin-bottom: 2rem;
-  @include push--auto(2rem);
+  // @include push--auto(2rem);
 }
 
 .progress__spinner {
-  @include push--auto();
+  //  @include push--auto();
 }
 
 img {
@@ -26,7 +26,7 @@ img {
 @media (max-width: 680px) {
   .article-card {
     width: 80%;
-    @include push--auto();
+    // @include push--auto();
   }
 
   .mat-card {

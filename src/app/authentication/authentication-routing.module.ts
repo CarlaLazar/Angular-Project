@@ -8,8 +8,8 @@ import { SignupComponent } from './signup/signup.component';
 const authRoutes = RoutesConfig.routesNames.auth;
 
 const authenticationRoutes: Routes = [
-  { path: authRoutes.signUp, component: SignupComponent },
-  { path: authRoutes.logIn, component: LoginComponent },
+  { path: authRoutes.signup, component: SignupComponent },
+  { path: authRoutes.login, component: LoginComponent },
   { path: '**', redirectTo: RoutesConfig.routes.error404 }
 ];
 

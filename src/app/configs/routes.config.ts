@@ -1,10 +1,13 @@
-import { InjectionToken } from '@angular/core';
+import { InjectionToken } from "@angular/core";
 
-export const ROUTES_CONFIG = new InjectionToken('routes.config');
+
+export const ROUTES_CONFIG = new InjectionToken<any>('routes.config',{ providedIn: 'root',
+factory: () => RoutesConfig});
 
 const basePaths = {
-  article: 'article',
+  articles: 'articles',
   auth: 'auth',
+  about: 'about'
 };
 
 const routesNames = {
@@ -21,17 +24,16 @@ const routesNames = {
   }
 };
 
-export const getArticleDetail = (id: string) => `/${basePaths.article}/${id}`;
+export const getArticleDetail = (id: string) => `/${basePaths.articles}/${id}`;
 
 export const RoutesConfig: any = {
   basePaths,
   routesNames,
   routes: {
-    home: `/${routesNames.home}`,
     error404: `/${routesNames.error404}`,
     about: `/${routesNames.about}`,
     article: {
-      myArticles: `/${basePaths.article}/${routesNames.article.myArticles}`,
+      myArticles: `/${basePaths.articles}/${routesNames.article.myArticles}`,
       detail: getArticleDetail
     },
     auth: {

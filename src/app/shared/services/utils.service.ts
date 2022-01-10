@@ -4,7 +4,8 @@ import { AppConfig } from 'src/app/configs/app.config';
 
 
 declare const require: any;
-const currentBrowser = require('browser');
+const currentBrowser = require('bowser');
+
 
 @Injectable({
   providedIn: 'root'

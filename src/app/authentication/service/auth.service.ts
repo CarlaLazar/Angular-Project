@@ -4,6 +4,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import jwt_decode from 'jwt-decode';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,7 @@ export class AuthService {
 
   constructor(private http: HttpClient,
     private cookieService: CookieService,
+    private storageService: StorageService,
     private router: Router,) {
   }
 
@@ -62,8 +65,16 @@ export class AuthService {
       'Something bad happened; please try again later.');
   };
 
-  isLoggedIn(): Observable<boolean> {
-    return this.loginStatus.asObservable();
+  isLoggedIn(): boolean {
+    try {
+      const token = this.storageService.getCookie('accessToken');
+      if (token) {
+        return !!jwt_decode(token);
+      }
+      return false;
+    } catch (Error) {
+      return false;
+    }
   }
 
   private hasToken(): boolean {
